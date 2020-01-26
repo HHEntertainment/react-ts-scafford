@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -8,7 +9,7 @@ import reducers from './store/reducers';
 import initializeStore from './store/initializeStore';
 import { SupportedEnv } from './env';
 
-import App from './components/App';
+import App from './components';
 import { loadEnvVariables } from './env';
 
 loadEnvVariables(process.env.NODE_ENV);
@@ -19,4 +20,8 @@ const store = createStore(reducers, {}, composeEnhancers(middleware));
 
 initializeStore(store);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+, document.getElementById("root"));
