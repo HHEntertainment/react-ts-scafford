@@ -1,3 +1,3 @@
-interface Post {
+export interface Post {
 
 }
