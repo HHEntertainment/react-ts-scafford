@@ -19,7 +19,7 @@ const isSupportedEnv = (env: string): boolean => {
 
 export const loadEnvVariables = (env: string) => {
   if (isSupportedEnv(env) === false) {
-    throw new Error("Unsupported enviroment")
+    throw new Error("Unsupported enviroment");
   }
 
   dotenv.config({ path: `${__dirname}/../.env.${env}`});
