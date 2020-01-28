@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { AppWrapper } from './styled';
-import { Action } from '../store'
-import { Post } from '../store/Board'
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import { Action } from '../store';
+import { Post } from '../store/Board';
+
+import Board from './Board';
 
 type Props = {
   fetchPostList: Action,
@@ -10,8 +13,8 @@ type Props = {
 
 export default (props: Props) => {
   return (
-    <AppWrapper>
-      React with typescript Scafford Project
-    </AppWrapper>
+    <BrowserRouter>
+      <Route path="/" component={Board} />
+    </BrowserRouter>
   )
 }

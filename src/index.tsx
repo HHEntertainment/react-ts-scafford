@@ -7,10 +7,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducers from './store/reducers';
 import initializeStore from './store/initializeStore';
-import { SupportedEnv } from './env';
-
+import { loadEnvVariables, SupportedEnv } from './env';
 import App from './components';
-import { loadEnvVariables } from './env';
 
 loadEnvVariables(process.env.NODE_ENV);
 const composeEnhancers = process.env.NODE_ENV === SupportedEnv.DEVELOPMENT ? composeWithDevTools : compose;
@@ -24,4 +22,4 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>
-, document.getElementById("root"));
+, document.getElementById('root'));
