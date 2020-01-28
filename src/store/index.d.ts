@@ -1,3 +1,3 @@
 export interface Action {
-  (param?: any): (dispatch: any) => any
+  (param?: any): (dispatch: any) => any,
 }
