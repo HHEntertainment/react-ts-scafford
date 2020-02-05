@@ -1,5 +1,5 @@
 import { FETCH_POST_LIST } from './actionTypes';
-import { Action } from '../index';
+import { Action } from 'store';
 
 export const fetchPostList: Action = () => dispatch =>
   dispatch({

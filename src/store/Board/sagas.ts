@@ -1,5 +1,5 @@
 import { all, put, call, takeLatest } from 'redux-saga/effects';
-import { request, SupportedHttpMethodType, isResponseStatusOk } from '../api';
+import { request, SupportedHttpMethodType, isResponseStatusOk } from 'store/api';
 
 export default function* sagas() {
   yield all([

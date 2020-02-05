@@ -1,4 +1,4 @@
-import { API_SERVER_URL } from '../constants/app';
+import { API_SERVER_URL } from 'constants/app';
 
 export enum SupportedHttpMethodType {
   get = 'GET',
