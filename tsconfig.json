@@ -8,12 +8,14 @@
     "jsx": "react",
     "moduleResolution": "node",
     "outDir": "dist",
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
+      "images": ["assets/images"],
+      "views": ["views"],
+      "store": ["store"],
+      "models": ["models"],
+      "constants": ["constants"],
+      "utils": ["utils"],
     }
   },
   "include": [
