@@ -8,3 +8,7 @@ node_modules/
 .env
 .env.development
 .env.production
+
+# Dependency lock files
+.yarn.lock
+.package-lock.json
