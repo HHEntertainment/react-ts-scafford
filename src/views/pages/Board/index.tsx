@@ -1,10 +1,16 @@
-import * as React from 'react';
+import { connect } from 'react-redux';
 
-type Props = {
-}
+import { fetchPostList } from 'store/Board/actions';
+import { getPosts } from 'store/Board/selectors';
+import Board from './Board';
 
-export default (props: Props) => {
-  return (
-    <div>React scaffording project with Typescript!</div>
-  )
-}
+export default connect(
+  (state) => ({
+    /* selector */
+    posts: getPosts(state),
+  }),
+  {
+    /* actions */
+    fetchPostList,
+  }
+)(Board);

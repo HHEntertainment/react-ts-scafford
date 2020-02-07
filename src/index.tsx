@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from './store/reducers';
 import initializeStore from './store/initializeStore';
 import sagas from './store/sagas';
-import App from './views';
+import App from './views/App';
 
 enum SupportedEnv {
   development = 'development',
@@ -26,5 +26,6 @@ initializeStore(store);
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>
-, document.getElementById('root'));
+  </Provider>,
+  document.getElementById('root')
+);

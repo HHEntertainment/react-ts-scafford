@@ -6,18 +6,18 @@ export enum SupportedHttpMethodType {
 }
 
 export type Request = {
-  method: SupportedHttpMethodType,
-  path: string,
-  body?: string,
+  method: SupportedHttpMethodType;
+  path: string;
+  body?: string;
 }
 
 const commonHeaders = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
-}
+};
 
-export function request(request: Request): Promise<Response> {
-  const { method, path } = request;
+export function request(req: Request): Promise<Response> {
+  const { method, path } = req;
 
   return fetch(`${API_SERVER_URL}${path}`, {
     method,
@@ -25,6 +25,4 @@ export function request(request: Request): Promise<Response> {
   });
 }
 
-export const isResponseStatusOk = (response: Response) => {
-  return response.status >= 200 && response.status < 300;
-}
+export const isResponseStatusOk: ((response: Response) => boolean) = (response: Response) => response.status >= 200 && response.status < 300;

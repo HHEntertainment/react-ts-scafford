@@ -1,3 +1,2 @@
-export default (store) => {
-  return store;
-};
+/* eslint-disable */
+export default (store) => store;
