@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 
-import { fetchPostList } from 'store/Board/actions';
-import { getPosts } from 'store/Board/selectors';
+import { fetchBoard } from 'store/Board/actions';
+import { getBoard } from 'store/Board/selectors';
+import { StoreState } from 'models/storeStates/StoreState';
 import Board from './Board';
 
 export default connect(
-  (state) => ({
+  (state: StoreState) => ({
     /* selector */
-    posts: getPosts(state),
+    board: getBoard(state),
   }),
   {
     /* actions */
-    fetchPostList,
+    fetchBoard,
   }
 )(Board);

@@ -1,13 +1,31 @@
-import { flow, set } from 'lodash/fp';
-
+import { set, get } from 'lodash/fp';
+import { BoardState } from 'models/storeStates/BoardState';
+import { Board } from 'models/Board';
 import {
-  FETCH_POST_LIST,
-  FETCH_POST_LIST_SUCCESS,
-  FETCH_POST_LIST_FAILED,
+  FETCH_BOARD,
+  FETCH_BOARD_SUCCESS,
+  FETCH_BOARD_FAILED,
 } from './actionTypes';
 
 export default {
-  [FETCH_POST_LIST]: (state) => set('isFetchPostListRequested', true)(state),
-  [FETCH_POST_LIST_SUCCESS]: (state, { posts }) => flow(set('isFetchPostListRequested', false), set('posts', posts))(state),
-  [FETCH_POST_LIST_FAILED]: (state) => set('isFetchPostListRequested', false)(state),
+  [FETCH_BOARD]: (state: BoardState) => {
+    const board: Board = get<BoardState, 'board'>('board')(state);
+    const updatedBoard = set('isRequested', true)(board);
+
+    return set('board', updatedBoard)(state);
+  },
+  [FETCH_BOARD_SUCCESS]: (state: BoardState, board: Board) => {
+    const newBoard = {
+      ...board,
+      isRequested: false,
+    };
+
+    return set('board', newBoard)(state);
+  },
+  [FETCH_BOARD_FAILED]: (state: BoardState) => {
+    const board: Board = get<BoardState, 'board'>('board')(state);
+    const updatedBoard = set('isRequested', false)(board);
+
+    return set('board', updatedBoard)(state);
+  },
 };

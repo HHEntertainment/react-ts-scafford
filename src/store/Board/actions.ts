@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { FETCH_POST_LIST, FetchPostListAction } from './actionTypes';
+import { FETCH_BOARD, FetchBoardAction } from './actionTypes';
 
-export const fetchPostList: FetchPostListAction = () => (dispatch: Dispatch) => dispatch({
-  type: FETCH_POST_LIST,
+export const fetchBoard: FetchBoardAction = () => (dispatch: Dispatch) => dispatch({
+  type: FETCH_BOARD,
 });
