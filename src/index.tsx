@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
+import {
+  createStore, applyMiddleware, compose, Store,
+} from 'redux';
+import { composeWithDevTools, EnhancerOptions } from 'redux-devtools-extension';
+import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import reducers from './store/reducers';
 import initializeStore from './store/initializeStore';
 import sagas from './store/sagas';
@@ -16,9 +18,9 @@ enum SupportedEnv {
 
 const composeEnhancers = process.env.NODE_ENV === SupportedEnv.development ? composeWithDevTools : compose;
 
-const sagaMiddleware = createSagaMiddleware();
-const middleware = applyMiddleware.apply(null, [sagaMiddleware]);
-const store = createStore(reducers, {}, composeEnhancers(middleware));
+const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
+const middleware: EnhancerOptions = applyMiddleware.apply(null, [sagaMiddleware]);
+const store: Store = createStore(reducers, {}, composeEnhancers(middleware));
 
 sagaMiddleware.run(sagas);
 initializeStore(store);
