@@ -2,11 +2,13 @@ import { API_SERVER_URL } from 'constants/app';
 
 export enum SupportedHttpMethodType {
   get = 'GET',
+  post = 'POST',
 }
 
 export type Request = {
   method: SupportedHttpMethodType,
   path: string,
+  body?: string,
 }
 
 const commonHeaders = {
